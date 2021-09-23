@@ -1,5 +1,5 @@
 # flutter_movieapp
- ### Aplikasi Biodata Form yang terinspirasi oleh :
+ ### Aplikasi Movie App yang terinspirasi oleh :
  - Netflix (https://www.netflix.com/)
  - E-Book BWA (https://pixel.buildwithangga.com/details/e-book-mobile)
 
