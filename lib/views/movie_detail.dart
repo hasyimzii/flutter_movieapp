@@ -13,13 +13,15 @@ class MovieDetail extends StatelessWidget {
     TextEditingController title = TextEditingController();
     TextEditingController director = TextEditingController();
 
-    // get arguments value
-    final Movie args = ModalRoute.of(context)!.settings.arguments as Movie;
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      // get arguments value
+      final Movie args = ModalRoute.of(context)!.settings.arguments as Movie;
 
-    // change controllers
-    poster = TextEditingController(text: args.poster);
-    title = TextEditingController(text: args.title);
-    director = TextEditingController(text: args.director);
+      // change controllers
+      poster = TextEditingController(text: args.poster);
+      title = TextEditingController(text: args.title);
+      director = TextEditingController(text: args.director);
+    }
 
     return ScaffoldTheme(
       title: 'Movie Detail',
