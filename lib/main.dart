@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
       ),
-      initialRoute: '/movie_list',
+      initialRoute: '/splash_screen',
       routes: {
         '/splash_screen': (context) => const SplashScreen(),
         '/movie_list': (context) => const MovieList(),

@@ -15,7 +15,6 @@ class ScaffoldTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new),
         centerTitle: true,
         title: Text(
           title,

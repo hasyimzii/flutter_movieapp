@@ -13,20 +13,27 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    Timer(
+      const Duration(seconds: 3),
+      () => Navigator.pushReplacementNamed(context, '/movie_list'),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(context, '/home_page'),
-    );
-    
     return Center(
-      child: Icon(
-        Icons.movie_filter_rounded,
-        size: 100,
-        color: redColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/logo.png',
+            width: 120,
+          ),
+          const SizedBox(height: 30),
+          CircularProgressIndicator(
+            color: redColor,
+          ),
+        ],
       ),
     );
   }

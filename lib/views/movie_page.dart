@@ -15,46 +15,48 @@ class MoviePage extends StatelessWidget {
     return ScaffoldTheme(
       title: 'Movie Details',
       body: Column(
-        children: const [
-          SizedBox(height: 30),
-          PosterImage(
+        children: [
+          const SizedBox(height: 30),
+          const PosterImage(
             image: 'assets/images/poster.jpg',
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Content(
             topIcon: Icons.bookmark,
             body: [
-              TitleTile(
+              const TitleTile(
                 title: 'The Godfather',
                 subtitle: 'Francis Ford Coppola',
                 year: '1972',
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               SubmitButton(
                 title: 'Watch Now',
                 icon: Icons.theaters,
+                onTap: () {},
               ),
-              SizedBox(height: 10),
-              Information(
+              const SizedBox(height: 10),
+              const Information(
                 rating: '5.0',
                 runtime: '2h 55min',
                 age: '18+',
               ),
-              SizedBox(height: 10),
-              Description(
+              const SizedBox(height: 10),
+              const Description(
                 title: 'Genre',
                 subtitle: 'Crime, Drama, Mafia',
               ),
-              Description(
+              const Description(
                 title: 'Cast',
                 subtitle: 'Marlon Brando, Al Pacino, James Caan, More',
               ),
-              Description(
-                  title: 'Description',
-                  subtitle: 'An organized crime dynastys '
-                      'aging patriarch transfers '
-                      'control of his clandestine '
-                      'empire to his reluctant son.'),
+              const Description(
+                title: 'Description',
+                subtitle: 'An organized crime dynastys '
+                    'aging patriarch transfers '
+                    'control of his clandestine '
+                    'empire to his reluctant son.',
+              ),
             ],
           ),
         ],

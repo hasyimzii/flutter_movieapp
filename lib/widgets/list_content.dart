@@ -5,43 +5,52 @@ class ListContent extends StatelessWidget {
   final String leading;
   final String title;
   final String subtitle;
-  final VoidCallback onTap;
+  final Object onTapArgs;
 
   const ListContent({
     Key? key,
     required this.leading,
     required this.title,
     required this.subtitle,
-    required this.onTap,
+    required this.onTapArgs,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
-      decoration: BoxDecoration(
-        color: greyColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(10),
-        child: ListTile(
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Image.asset(leading),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: Ink(
+        decoration: BoxDecoration(
+          color: greyColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(10),
+          child: ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.asset(leading),
+            ),
+            title: Text(
+              title,
+              style: titleListTextStyle,
+            ),
+            subtitle: Text(
+              subtitle,
+              style: subtitleListTextStyle,
+            ),
+            trailing: const Icon(
+              Icons.chevron_right_rounded,
+              size: 30,
+            ),
           ),
-          title: Text(
-            title,
-            style: titleListTextStyle,
-          ),
-          subtitle: Text(
-            subtitle,
-            style: subtitleListTextStyle,
-          ),
-          trailing: const Icon(
-            Icons.chevron_right_rounded,
-            size: 40,
-          ),
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              '/movie_detail',
+              arguments: onTapArgs,
+            );
+          },
         ),
       ),
     );
