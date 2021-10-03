@@ -39,15 +39,16 @@ class ListContent extends StatelessWidget {
               subtitle,
               style: subtitleListTextStyle,
             ),
-            trailing: const Icon(
-              Icons.chevron_right_rounded,
-              size: 30,
+            trailing: IconButton(
+              icon : const Icon(Icons.delete),
+              iconSize: 20,
+              onPressed: () {},
             ),
           ),
           onTap: () {
             Navigator.pushNamed(
               context,
-              '/movie_detail',
+              '/movie_update',
               arguments: onTapArgs,
             );
           },

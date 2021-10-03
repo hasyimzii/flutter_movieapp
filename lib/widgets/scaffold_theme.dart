@@ -34,9 +34,7 @@ class ScaffoldTheme extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: SingleChildScrollView(
-            child: body,
-          ),
+          child: body,
         ),
       ),
     );

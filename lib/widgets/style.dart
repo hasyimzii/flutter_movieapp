@@ -20,7 +20,7 @@ TextStyle subtitleTextStyle = TextStyle(
 TextStyle titleListTextStyle = TextStyle(
   color: whiteColor,
   fontWeight: FontWeight.w500,
-  fontSize: 16,
+  fontSize: 15,
 );
 
 TextStyle subtitleListTextStyle = TextStyle(

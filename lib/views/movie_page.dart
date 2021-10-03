@@ -14,7 +14,7 @@ class MoviePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScaffoldTheme(
       title: 'Movie Details',
-      body: Column(
+      body: ListView(
         children: [
           const SizedBox(height: 30),
           const PosterImage(
