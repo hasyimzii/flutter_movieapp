@@ -37,16 +37,19 @@ class MovieUpdate extends StatelessWidget {
             TextFieldInput(
               label: 'Poster Url',
               text: poster,
+              onChanged: (value) {},
             ),
             const SizedBox(height: 15),
             TextFieldInput(
               label: 'Title',
               text: title,
+              onChanged: (value) {},
             ),
             const SizedBox(height: 15),
             TextFieldInput(
               label: 'Director',
               text: director,
+              onChanged: (value) {},
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
