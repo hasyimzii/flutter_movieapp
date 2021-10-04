@@ -45,4 +45,8 @@ class MovieProvider with ChangeNotifier {
     movie.director = director;
     notifyListeners();
   }
+  void deleteMovie(Movie movie){
+    _movies.remove(movie);
+    notifyListeners();
+  }
 }

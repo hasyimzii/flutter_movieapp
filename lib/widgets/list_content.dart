@@ -6,6 +6,7 @@ class ListContent extends StatelessWidget {
   final String title;
   final String subtitle;
   final Object onTapArgs;
+  final VoidCallback onDelete;
 
   const ListContent({
     Key? key,
@@ -13,6 +14,7 @@ class ListContent extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.onTapArgs,
+    required this.onDelete,
   }) : super(key: key);
 
   @override
@@ -42,7 +44,7 @@ class ListContent extends StatelessWidget {
             trailing: IconButton(
               icon : const Icon(Icons.delete),
               iconSize: 20,
-              onPressed: () {},
+              onPressed: onDelete,
             ),
           ),
           onTap: () {

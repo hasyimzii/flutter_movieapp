@@ -31,6 +31,7 @@ class MovieList extends StatelessWidget {
                       title: movies.movies[index].title,
                       subtitle: movies.movies[index].director,
                       onTapArgs: movies.movies[index],
+                      onDelete: () => movies.deleteMovie(movies.movies[index]),
                     );
                   },
                 );
