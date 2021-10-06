@@ -82,6 +82,10 @@ class MovieUpdate extends StatelessWidget {
                       provider.editMovie(index!,
                           Movie(poster.text, title.text, director.text));
                     }
+                    else{
+                      provider.createMovie(
+                        Movie(poster.text, title.text, director.text));
+                    }
                     Navigator.pushNamedAndRemoveUntil(context, '/movie_list',
                         (Route<dynamic> route) => false);
                   },
