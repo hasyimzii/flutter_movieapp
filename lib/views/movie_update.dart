@@ -76,18 +76,35 @@ class MovieUpdate extends StatelessWidget {
                   title: pageText,
                   icon: Icons.save,
                   onTap: () {
+                    // validate form
                     if (!(_formKey.currentState?.validate() ?? false)) return;
+                    // get provider read
                     MovieProvider provider = context.read<MovieProvider>();
+                    // if edit
                     if (movie != null) {
-                      provider.editMovie(index!,
-                          Movie(poster.text, title.text, director.text));
-                    }
-                    else{
+                      provider.editMovie(
+                        index!,
+                        Movie(
+                          poster.text,
+                          title.text,
+                          director.text,
+                        ),
+                      );
+                    // if create
+                    } else {
                       provider.createMovie(
-                        Movie(poster.text, title.text, director.text));
+                        Movie(
+                          poster.text,
+                          title.text,
+                          director.text,
+                        ),
+                      );
                     }
-                    Navigator.pushNamedAndRemoveUntil(context, '/movie_list',
-                        (Route<dynamic> route) => false);
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/movie_list',
+                      (Route<dynamic> route) => false,
+                    );
                   },
                 ),
               ),
