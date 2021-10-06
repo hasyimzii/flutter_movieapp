@@ -39,12 +39,11 @@ class MovieProvider with ChangeNotifier {
   List get movies => _movies;
   int get moviesLength => _movies.length;
 
-  void editMovie(Movie movie, String poster, String title, String director) {
-    movie.poster = poster;
-    movie.title = title;
-    movie.director = director;
+  void editMovie(int index, Movie movie) {
+    _movies[index] = movie;
     notifyListeners();
   }
+
   void deleteMovie(Movie movie){
     _movies.remove(movie);
     notifyListeners();

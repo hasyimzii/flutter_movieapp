@@ -25,12 +25,15 @@ class MovieList extends StatelessWidget {
                 return ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemCount: movies.moviesLength,
-                  itemBuilder: (context, index) {
+                  itemBuilder: (BuildContext context, int index) {
                     return ListContent(
                       leading: movies.movies[index].poster,
                       title: movies.movies[index].title,
                       subtitle: movies.movies[index].director,
-                      onTapArgs: movies.movies[index],
+                      onTapArgs: <String, dynamic>{
+                        'index': index,
+                        'movie': movies.movies[index],
+                      },
                       onDelete: () => movies.deleteMovie(movies.movies[index]),
                     );
                   },

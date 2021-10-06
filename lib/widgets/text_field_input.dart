@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class TextFieldInput extends StatelessWidget {
   final String label;
   final TextEditingController text;
-  final FormFieldValidator onChanged;
+  final FormFieldValidator<String>? validator;
 
   const TextFieldInput({
     Key? key,
     required this.label,
     required this.text,
-    required this.onChanged,
+    required this.validator
   }) : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class TextFieldInput extends StatelessWidget {
         border: const OutlineInputBorder(),
         labelText: label,
       ),
-      onChanged: onChanged,
+      validator: validator,
     );
   }
 }
