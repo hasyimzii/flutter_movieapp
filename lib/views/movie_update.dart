@@ -90,7 +90,7 @@ class MovieUpdate extends StatelessWidget {
                           director.text,
                         ),
                       );
-                    // if create
+                      // if create
                     } else {
                       provider.createMovie(
                         Movie(
@@ -100,11 +100,7 @@ class MovieUpdate extends StatelessWidget {
                         ),
                       );
                     }
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/movie_list',
-                      (Route<dynamic> route) => false,
-                    );
+                    Navigator.pop(context);
                   },
                 ),
               ),
