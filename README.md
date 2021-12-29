@@ -1,4 +1,6 @@
-# flutter_movieapp
+# Flutter Movie App
+ Aplikasi streaming film berbasis mobile
+ 
  ## (Untuk URL poster bisa cek di assets/images/)
  ### Anggota Kelompok :
  - Muhammad Hasyim Asy'ari
