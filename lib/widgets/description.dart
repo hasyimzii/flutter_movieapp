@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import '../utils/style.dart';
 
 class Description extends StatelessWidget {
   final String title;

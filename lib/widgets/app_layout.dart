@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import '../utils/style.dart';
 
-class ScaffoldTheme extends StatelessWidget {
+class AppLayout extends StatelessWidget {
   final String title;
   final Widget body;
 
-  const ScaffoldTheme({
+  const AppLayout({
     Key? key,
     required this.title,
     required this.body,
@@ -33,9 +33,7 @@ class ScaffoldTheme extends StatelessWidget {
         elevation: 0.0,
       ),
       body: SafeArea(
-        child: Center(
-          child: body,
-        ),
+        child: body
       ),
     );
   }

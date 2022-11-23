@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import '../utils/style.dart';
 
 class SubmitButton extends StatelessWidget {
   final String title;
@@ -26,7 +26,7 @@ class SubmitButton extends StatelessWidget {
         style: titleListTextStyle,
       ),
       style: ElevatedButton.styleFrom(
-        primary: redColor,
+        backgroundColor: primaryColor,
         minimumSize: const Size(double.infinity, 40),
       ),
     );

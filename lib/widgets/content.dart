@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'style.dart';
+import '../utils/style.dart';
 
 class Content extends StatelessWidget {
   final List<Widget> body;

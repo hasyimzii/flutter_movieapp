@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../widgets/scaffold_theme.dart';
-import '../widgets/poster_image.dart';
-import '../widgets/content.dart';
-import '../widgets/title_tile.dart';
-import '../widgets/submit_button.dart';
-import '../widgets/information.dart';
-import '../widgets/description.dart';
+import '../../widgets/app_layout.dart';
+import '../../widgets/poster_image.dart';
+import '../../widgets/content.dart';
+import '../../widgets/title_tile.dart';
+import '../../widgets/submit_button.dart';
+import '../../widgets/information.dart';
+import '../../widgets/description.dart';
 
-class MoviePage extends StatelessWidget {
-  const MoviePage({Key? key}) : super(key: key);
+class MovieDetail extends StatelessWidget {
+  const MovieDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldTheme(
+    return AppLayout(
       title: 'Movie Details',
       body: ListView(
         children: [
@@ -31,7 +31,7 @@ class MoviePage extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               SubmitButton(
-                title: 'Watch Now',
+                title: 'Watch Trailer',
                 icon: Icons.theaters,
                 onTap: () {},
               ),

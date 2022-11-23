@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/movie_provider.dart';
 
-import '../widgets/scaffold_theme.dart';
+import '../widgets/app_layout.dart';
 import '../widgets/list_content.dart';
 import '../widgets/submit_button.dart';
 
