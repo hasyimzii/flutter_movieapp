@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/style.dart';
+import '../../../utils/style.dart';
 
 class Information extends StatelessWidget {
   final String rating;
@@ -30,11 +30,11 @@ class Information extends StatelessWidget {
               children: [
                 Text(
                   'Rating',
-                  style: infoTextStyle,
+                  style: subtitleText(12),
                 ),
                 Text(
                   rating,
-                  style: infoTextStyle,
+                  style: titleText(12),
                 ),
               ],
             ),
@@ -44,11 +44,11 @@ class Information extends StatelessWidget {
               children: [
                 Text(
                   'Runtime',
-                  style: infoTextStyle,
+                  style: subtitleText(12),
                 ),
                 Text(
                   runtime,
-                  style: infoTextStyle,
+                  style: titleText(12),
                 ),
               ],
             ),
@@ -58,11 +58,11 @@ class Information extends StatelessWidget {
               children: [
                 Text(
                   'Age',
-                  style: infoTextStyle,
+                  style: subtitleText(12),
                 ),
                 Text(
                   age,
-                  style: infoTextStyle,
+                  style: titleText(12),
                 ),
               ],
             ),

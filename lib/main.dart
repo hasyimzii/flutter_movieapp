@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import '/provider/movie_provider.dart';
 
 import 'views/splash_screen.dart';
-import 'views/movie_list.dart';
-import 'views/movie_update.dart';
-import 'views/movie_detail/movie_detail.dart';
+import 'views/movie/page/movie_page.dart';
+import 'views/movie/movie_update.dart';
+import 'views/movie/detail/movie_detail.dart';
 
 void main() {
   runApp(const MyApp());

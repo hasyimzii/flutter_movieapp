@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../provider/movie_provider.dart';
 
-import '../widgets/app_layout.dart';
-import '../widgets/list_content.dart';
-import '../widgets/submit_button.dart';
+import '../../../widgets/app_layout.dart';
+import '../../../widgets/list_content.dart';
+import '../../../widgets/submit_button.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldTheme(
+    return AppLayout(
       title: 'Movie List',
       body: Column(
         children: [

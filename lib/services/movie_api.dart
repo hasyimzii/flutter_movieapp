@@ -29,12 +29,35 @@ class MovieApi {
     }
   }
 
-  static Future createBlog({
-    required Map<String, dynamic> data,
+  static Future searchMovie({
+    required String title,
   }) async {
     try {
       // rest api
       Response response = await _dio.get(
+        '/movie/search',
+        queryParameters: {
+          'title': title,
+        },
+      );
+
+      return Movie.fromJson(response.data);
+    } on DioError catch (e) {
+      // catch error
+      if (e.response != null) {
+        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
+      } else {
+        throw e.message.toString();
+      }
+    }
+  }
+
+  static Future createMovie({
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      // rest api
+      Response response = await _dio.post(
         '/movie/create',
         queryParameters: {
           'data': data,
@@ -52,13 +75,36 @@ class MovieApi {
     }
   }
 
-  static Future updateBlog({
+  static Future updateMovie({
     required Map<String, dynamic> data,
   }) async {
     try {
       // rest api
-      Response response = await _dio.get(
+      Response response = await _dio.post(
         '/movie/update',
+        queryParameters: {
+          'data': data,
+        },
+      );
+
+      return Movie.fromJson(response.data);
+    } on DioError catch (e) {
+      // catch error
+      if (e.response != null) {
+        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
+      } else {
+        throw e.message.toString();
+      }
+    }
+  }
+
+  static Future deleteMovie({
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      // rest api
+      Response response = await _dio.post(
+        '/movie/delete',
         queryParameters: {
           'data': data,
         },

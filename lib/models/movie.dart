@@ -23,8 +23,8 @@ class MovieData {
         required this.runtime,
         required this.age,
         required this.genre,
-        required this.cast,
         required this.description,
+        required this.url,
         required this.image,
     });
 
@@ -32,12 +32,12 @@ class MovieData {
     final String title;
     final String director;
     final String year;
-    final String rating;
+    final double rating;
     final String runtime;
     final String age;
     final String genre;
-    final String cast;
     final String description;
+    final String url;
     final String image;
 
     factory MovieData.fromJson(Map<String, dynamic> json) => MovieData(
@@ -45,12 +45,12 @@ class MovieData {
         title: json["title"],
         director: json["director"],
         year: json["year"],
-        rating: json["rating"],
+        rating: double.parse(json["rating"]),
         runtime: json["runtime"],
         age: json["age"],
         genre: json["genre"],
-        cast: json["cast"],
         description: json["description"],
+        url: json["url"],
         image: json["image"],
     );
 }

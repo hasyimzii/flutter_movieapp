@@ -29,7 +29,6 @@ class CreateMovie extends MovieEvent {
     required this.runtime,
     required this.age,
     required this.genre,
-    required this.cast,
     required this.description,
     required this.url,
     required this.image,
@@ -38,11 +37,10 @@ class CreateMovie extends MovieEvent {
   final String title;
   final String director;
   final String year;
-  final String rating;
+  final double rating;
   final String runtime;
   final String age;
   final String genre;
-  final String cast;
   final String description;
   final String url;
   final String image;
@@ -58,7 +56,6 @@ class UpdateMovie extends MovieEvent {
     required this.runtime,
     required this.age,
     required this.genre,
-    required this.cast,
     required this.description,
     required this.url,
     required this.image,
@@ -68,11 +65,10 @@ class UpdateMovie extends MovieEvent {
   final String title;
   final String director;
   final String year;
-  final String rating;
+  final double rating;
   final String runtime;
   final String age;
   final String genre;
-  final String cast;
   final String description;
   final String url;
   final String image;

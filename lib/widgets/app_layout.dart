@@ -18,17 +18,8 @@ class AppLayout extends StatelessWidget {
         centerTitle: true,
         title: Text(
           title,
-          style: titleListTextStyle,
+          style: titleText(13),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: const Icon(Icons.share),
-            ),
-          ),
-        ],
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),

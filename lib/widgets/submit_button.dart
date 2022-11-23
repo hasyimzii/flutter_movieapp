@@ -23,7 +23,7 @@ class SubmitButton extends StatelessWidget {
       ),
       label: Text(
         title,
-        style: titleListTextStyle,
+        style: titleText(13),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: primaryColor,
