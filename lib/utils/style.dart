@@ -10,6 +10,8 @@ Color semiGreyColor = const Color(0xFF6b6b6b);
 // Shimmer
 Color shimmerColor = const Color(0xFFDDDDDD);
 Color lightColor = const Color(0xFFF7F7F7);
+// alert
+Color yellowColor = const Color(0xFFFFCE10);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;

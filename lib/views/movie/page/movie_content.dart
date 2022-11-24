@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../utils/style.dart';
+import '../../../utils/style.dart';
 
-class ListContent extends StatelessWidget {
-  final String leading;
-  final String title;
-  final String subtitle;
-  final Object onTapArgs;
-  final VoidCallback onDelete;
-
-  const ListContent({
+class MovieContent extends StatelessWidget {
+  const MovieContent({
     Key? key,
-    required this.leading,
+    required this.image,
     required this.title,
-    required this.subtitle,
+    required this.director,
+    required this.rating,
     required this.onTapArgs,
-    required this.onDelete,
   }) : super(key: key);
+
+  final String image;
+  final String title;
+  final String director;
+  final String rating;
+  final Object onTapArgs;
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +31,29 @@ class ListContent extends StatelessWidget {
           child: ListTile(
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.asset(leading),
+              child: Image.network(image),
             ),
             title: Text(
               title,
-              style: titleListTextStyle,
+              style: titleText(15),
             ),
             subtitle: Text(
-              subtitle,
-              style: subtitleListTextStyle,
+              director,
+              style: subtitleText(13),
             ),
-            trailing: IconButton(
-              icon : const Icon(Icons.delete),
-              iconSize: 20,
-              onPressed: onDelete,
+            trailing: Row(
+              children: [
+                Icon(
+                  Icons.star_rounded,
+                  size: 10,
+                  color: yellowColor,
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  '$rating / 10',
+                  style: subtitleText(13),
+                )
+              ],
             ),
           ),
           onTap: () {
