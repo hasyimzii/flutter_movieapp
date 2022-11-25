@@ -14,22 +14,29 @@ class MovieDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     // define arguments
     final args = ModalRoute.of(context)!.settings.arguments as Map;
-    MovieData _movie = args['movie'];
+    MovieData movie = args['movie'];
 
     return AppLayout(
       title: 'Movie Details',
+      icon: Icons.edit,
+      action: () {
+        Navigator.pushNamed(
+          context,
+          'routeName',
+        );
+      },
       body: PanelWidget(
-        image: _movie.image,
+        image: movie.image,
         panel: MoviePanel(
-          title: _movie.title,
-          director: _movie.director,
-          year: _movie.year,
-          rating: _movie.rating.toString(),
-          runtime: _movie.runtime,
-          age: _movie.age,
-          genre: _movie.genre,
-          description: _movie.description,
-          url: _movie.url,
+          title: movie.title,
+          director: movie.director,
+          year: movie.year,
+          rating: movie.rating.toString(),
+          runtime: movie.runtime,
+          age: movie.age,
+          genre: movie.genre,
+          description: movie.description,
+          url: movie.url,
         ),
       ),
     );

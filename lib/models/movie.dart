@@ -28,7 +28,7 @@ class MovieData {
         required this.image,
     });
 
-    final String id;
+    final int id;
     final String title;
     final String director;
     final String year;

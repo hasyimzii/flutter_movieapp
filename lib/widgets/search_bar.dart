@@ -36,7 +36,7 @@ class SearchBar extends StatelessWidget {
                 child: Icon(
                   Icons.search,
                   size: 20,
-                  color: semiWhiteColor,
+                  color: whiteColor,
                 ),
               ),
               suffixIcon: IconButton(
@@ -44,7 +44,7 @@ class SearchBar extends StatelessWidget {
                 icon: Icon(
                   Icons.close,
                   size: 20,
-                  color: semiWhiteColor,
+                  color: whiteColor,
                 ),
                 onPressed: () {
                   controller.clear();

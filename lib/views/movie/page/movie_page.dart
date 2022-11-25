@@ -10,18 +10,25 @@ import '../../../widgets/search_bar.dart';
 import 'movie_builder.dart';
 import 'movie_skeleton.dart';
 
-class MovieList extends StatelessWidget {
-  const MovieList({Key? key}) : super(key: key);
+class MoviePage extends StatelessWidget {
+  const MoviePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _controller = TextEditingController();
+    TextEditingController controller = TextEditingController();
     return AppLayout(
       title: 'Movie List',
+      icon: Icons.add,
+      action: () {
+        Navigator.pushNamed(
+          context,
+          'routeName',
+        );
+      },
       body: Column(
         children: [
           SearchBar(
-            controller: _controller,
+            controller: controller,
             placeholder: 'Search Movie',
             onSubmitted: (value) {
               final MovieBloc _movieBloc = context.read<MovieBloc>();
@@ -31,6 +38,13 @@ class MovieList extends StatelessWidget {
           Expanded(
             child: BlocBuilder<MovieBloc, MovieState>(
               builder: (context, state) {
+                // init page
+                if (state is MovieInitial) {
+                  final MovieBloc _movieBloc = context.read<MovieBloc>();
+                  _movieBloc.add(GetMovie());
+                }
+
+                // build page
                 if (state is MovieInitial) {
                   return Column();
                 } else if (state is MovieLoading) {

@@ -14,7 +14,7 @@ class MovieContent extends StatelessWidget {
   final String image;
   final String title;
   final String director;
-  final String rating;
+  final double rating;
   final Object onTapArgs;
 
   @override
@@ -31,7 +31,9 @@ class MovieContent extends StatelessWidget {
           child: ListTile(
             leading: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.network(image),
+              child: Image.network(
+                image,
+              ),
             ),
             title: Text(
               title,
@@ -39,27 +41,17 @@ class MovieContent extends StatelessWidget {
             ),
             subtitle: Text(
               director,
-              style: subtitleText(13),
+              style: subtitleText(12),
             ),
-            trailing: Row(
-              children: [
-                Icon(
-                  Icons.star_rounded,
-                  size: 10,
-                  color: yellowColor,
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  '$rating / 10',
-                  style: subtitleText(13),
-                )
-              ],
+            trailing: Text(
+              '$rating/10',
+              style: titleText(12),
             ),
           ),
           onTap: () {
             Navigator.pushNamed(
               context,
-              '/movie_update',
+              '/movie_detail',
               arguments: onTapArgs,
             );
           },

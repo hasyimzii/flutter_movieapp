@@ -31,7 +31,7 @@ TextStyle subtitleText(double font) => TextStyle(
 ); //14 //13
 
 TextStyle mediumText(double font) => TextStyle(
-  color: semiWhiteColor,
+  color: whiteColor,
   fontWeight: medium,
   fontSize: font,
 ); //13

@@ -68,15 +68,16 @@ class MoviePanel extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          'genre',
+          'Genre',
           style: titleText(15),
         ),
         Text(
           genre,
           style: subtitleText(13),
         ),
+        const SizedBox(height: 10),
         Text(
-          'description',
+          'Description',
           style: titleText(15),
         ),
         Text(

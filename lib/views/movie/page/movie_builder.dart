@@ -15,19 +15,18 @@ class MovieBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<MovieData> _movie = movieLoaded.movie;
+    final List<MovieData> movie = movieLoaded.movie;
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      itemCount: _movie.length,
+      itemCount: movie.length,
       itemBuilder: (BuildContext context, int index) {
         return MovieContent(
-          image: _movie[index].image,
-          title: _movie[index].title,
-          director: _movie[index].director,
-          rating: _movie[index].rating.toString(),
+          image: movie[index].image,
+          title: movie[index].title,
+          director: movie[index].director,
+          rating: movie[index].rating,
           onTapArgs: <String, dynamic>{
-            'index': index,
-            'movie': _movie[index],
+            'movie': movie[index],
           },
         );
       },

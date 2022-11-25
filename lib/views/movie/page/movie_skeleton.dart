@@ -23,6 +23,11 @@ class MovieSkeleton extends StatelessWidget {
               baseColor: shimmerColor,
               highlightColor: lightColor,
               child: const ListTile(
+                leading: ShimmerWidget(
+                  width: 50,
+                  height: 90,
+                  radius: 10,
+                ),
                 title: ShimmerWidget(
                   width: double.infinity,
                   height: 8,

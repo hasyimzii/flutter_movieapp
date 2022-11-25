@@ -5,14 +5,14 @@ import '../../widgets/text_field_input.dart';
 import '../../widgets/submit_button.dart';
 import '../../models/movie.dart';
 
-class MovieUpdate extends StatelessWidget {
-  const MovieUpdate({Key? key}) : super(key: key);
+class MovieForm extends StatelessWidget {
+  const MovieForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // controllers
     String pageText = 'Create Movie';
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     TextEditingController poster = TextEditingController();
     TextEditingController title = TextEditingController();
     TextEditingController director = TextEditingController();
@@ -37,12 +37,12 @@ class MovieUpdate extends StatelessWidget {
       }
     }
 
-    return App(
+    return AppLayout(
       title: pageText,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: ListView(
             children: [
               TextFieldInput(
@@ -75,7 +75,7 @@ class MovieUpdate extends StatelessWidget {
                   icon: Icons.save,
                   onTap: () {
                     // validate form
-                    if (!(_formKey.currentState?.validate() ?? false)) return;
+                    if (!(formKey.currentState?.validate() ?? false)) return;
                     // get provider read
                     MovieProvider provider = context.read<MovieProvider>();
                     // if edit

@@ -19,7 +19,7 @@ class Information extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: semiWhiteColor,
+        color: semiGreyColor,
       ),
       child: IntrinsicHeight(
         child: Row(
@@ -33,7 +33,7 @@ class Information extends StatelessWidget {
                   style: subtitleText(12),
                 ),
                 Text(
-                  rating,
+                  '$rating/10',
                   style: titleText(12),
                 ),
               ],
