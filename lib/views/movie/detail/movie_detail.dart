@@ -18,13 +18,7 @@ class MovieDetail extends StatelessWidget {
 
     return AppLayout(
       title: 'Movie Details',
-      icon: Icons.edit,
-      action: () {
-        Navigator.pushNamed(
-          context,
-          'routeName',
-        );
-      },
+      floatingButton: Column(),
       body: PanelWidget(
         image: movie.image,
         panel: MoviePanel(
@@ -38,6 +32,15 @@ class MovieDetail extends StatelessWidget {
           description: movie.description,
           url: movie.url,
         ),
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/movie_form',
+            arguments: {
+              'movie': movie,
+            },
+          );
+        },
       ),
     );
   }

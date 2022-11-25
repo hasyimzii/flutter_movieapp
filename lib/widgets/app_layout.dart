@@ -5,14 +5,12 @@ class AppLayout extends StatelessWidget {
   const AppLayout({
     Key? key,
     required this.title,
-    required this.icon,
-    required this.action,
+    required this.floatingButton,
     required this.body,
   }) : super(key: key);
 
   final String title;
-  final IconData icon;
-  final VoidCallback action;
+  final Widget floatingButton;
   final Widget body;
 
   @override
@@ -26,19 +24,8 @@ class AppLayout extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              child: Icon(
-                icon,
-                size: 20,
-              ),
-              onTap: action,
-            ),
-          ),
-        ],
       ),
+      floatingActionButton: floatingButton,
       body: body,
     );
   }

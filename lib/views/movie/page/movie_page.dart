@@ -18,67 +18,77 @@ class MoviePage extends StatelessWidget {
     TextEditingController controller = TextEditingController();
     return AppLayout(
       title: 'Movie List',
-      icon: Icons.add,
-      action: () {
-        Navigator.pushNamed(
-          context,
-          'routeName',
-        );
-      },
-      body: Column(
-        children: [
-          SearchBar(
-            controller: controller,
-            placeholder: 'Search Movie',
-            onSubmitted: (value) {
-              final MovieBloc _movieBloc = context.read<MovieBloc>();
-              _movieBloc.add(SearchMovie(title: value));
-            },
-          ),
-          Expanded(
-            child: BlocBuilder<MovieBloc, MovieState>(
-              builder: (context, state) {
-                // init page
-                if (state is MovieInitial) {
-                  final MovieBloc _movieBloc = context.read<MovieBloc>();
-                  _movieBloc.add(GetMovie());
-                }
+      floatingButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        child: Icon(
+          Icons.add,
+          color: whiteColor,
+          size: 25,
+        ),
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/movie_form',
+          );
+        },
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async => context.read<MovieBloc>().add(GetMovie()),
+        child: Column(
+          children: [
+            SearchBar(
+              controller: controller,
+              placeholder: 'Search Movie',
+              onSubmitted: (value) {
+                final MovieBloc movieBloc = context.read<MovieBloc>();
+                movieBloc.add(SearchMovie(title: value));
+              },
+            ),
+            Expanded(
+              child: BlocBuilder<MovieBloc, MovieState>(
+                builder: (context, state) {
+                  // init page
+                  if (state is MovieInitial) {
+                    final MovieBloc movieBloc = context.read<MovieBloc>();
+                    movieBloc.add(GetMovie());
+                  }
 
-                // build page
-                if (state is MovieInitial) {
-                  return Column();
-                } else if (state is MovieLoading) {
-                  return const MovieSkeleton();
-                } else if (state is MovieLoaded) {
-                  if (state.movie.isNotEmpty) {
-                    return MovieBuilder(movieLoaded: state);
+                  // build page
+                  if (state is MovieInitial) {
+                    return Column();
+                  } else if (state is MovieLoading) {
+                    return const MovieSkeleton();
+                  } else if (state is MovieLoaded) {
+                    if (state.movie.isNotEmpty) {
+                      return MovieBuilder(movieLoaded: state);
+                    } else {
+                      return Center(
+                        child: Text(
+                          'Mahasiswa tidak ditemukan!',
+                          style: mediumText(13),
+                        ),
+                      );
+                    }
+                  } else if (state is MovieError) {
+                    return Center(
+                      child: Text(
+                        state.message,
+                        style: mediumText(13),
+                      ),
+                    );
                   } else {
                     return Center(
                       child: Text(
-                        'Mahasiswa tidak ditemukan!',
+                        'Terjadi kesalahan!',
                         style: mediumText(13),
                       ),
                     );
                   }
-                } else if (state is MovieError) {
-                  return Center(
-                    child: Text(
-                      state.message,
-                      style: mediumText(13),
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'Terjadi kesalahan!',
-                      style: mediumText(13),
-                    ),
-                  );
-                }
-              },
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

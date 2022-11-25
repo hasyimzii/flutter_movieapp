@@ -6,10 +6,12 @@ class PanelWidget extends StatelessWidget {
     Key? key,
     required this.image,
     required this.panel,
+    required this.onTap,
   }) : super(key: key);
 
   final String image;
   final Widget panel;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +47,13 @@ class PanelWidget extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(10),
                 ),
                 child: const Icon(
-                  Icons.bookmark,
-                  size: 28,
+                  Icons.edit,
+                  size: 25,
                 ),
-                onPressed: () {},
+                onPressed: onTap,
               ),
             ),
           ],

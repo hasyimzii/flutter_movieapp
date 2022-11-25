@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'blocs/movie/movie_bloc.dart';
+import 'blocs/stepper/stepper_cubit.dart';
 
 import 'views/movie/page/movie_page.dart';
 import 'views/movie/detail/movie_detail.dart';
-// import 'views/movie/movie_update.dart';
+import 'views/form/movie_form.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MovieBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => MovieBloc(),
+        ),
+        BlocProvider(
+          create: (context) => StepperCubit(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -28,7 +36,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/movie_page': (context) => const MoviePage(),
           '/movie_detail': (context) => const MovieDetail(),
-          // '/movie_update': (context) => const MovieUpdate(),
+          '/movie_form': (context) => const MovieForm(),
         },
       ),
     );
