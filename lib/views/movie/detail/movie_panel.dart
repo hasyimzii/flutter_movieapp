@@ -36,21 +36,20 @@ class MoviePanel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
-          contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+          contentPadding: const EdgeInsets.only(left: 0, right: 0),
           title: Text(
             title,
-            style: titleText(15),
+            style: titleText(18),
           ),
           subtitle: Text(
             director,
-            style: subtitleText(13),
+            style: subtitleText(15),
           ),
           trailing: Text(
             year,
             style: titleText(15),
           ),
         ),
-        const SizedBox(height: 5),
         SubmitButton(
           title: 'Watch Trailer',
           icon: Icons.theaters,

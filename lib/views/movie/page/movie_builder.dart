@@ -24,6 +24,7 @@ class MovieBuilder extends StatelessWidget {
           image: movie[index].image,
           title: movie[index].title,
           director: movie[index].director,
+          year: movie[index].year,
           rating: movie[index].rating,
           onTapArgs: <String, dynamic>{
             'movie': movie[index],

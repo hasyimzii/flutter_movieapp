@@ -18,19 +18,23 @@ class MoviePage extends StatelessWidget {
     TextEditingController controller = TextEditingController();
     return AppLayout(
       title: 'Movie List',
-      floatingButton: FloatingActionButton(
-        backgroundColor: primaryColor,
-        child: Icon(
-          Icons.add,
-          color: whiteColor,
-          size: 25,
+      floatingButton: SizedBox(
+        width: 45,
+        height: 45,
+        child: FloatingActionButton(
+          backgroundColor: primaryColor,
+          child: Icon(
+            Icons.add,
+            color: whiteColor,
+            size: 25,
+          ),
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/movie_form',
+            );
+          },
         ),
-        onPressed: () {
-          Navigator.pushNamed(
-            context,
-            '/movie_form',
-          );
-        },
       ),
       body: RefreshIndicator(
         onRefresh: () async => context.read<MovieBloc>().add(GetMovie()),

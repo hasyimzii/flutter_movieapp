@@ -14,17 +14,22 @@ class MultilineInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: TextInputType.multiline,
-      maxLines: null,
-      controller: controller,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        labelText: label,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: TextFormField(
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        controller: controller,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          labelText: label,
+        ),
+        validator: (String? value) {
+          if (value?.isEmpty ?? true) return 'required';
+        },
       ),
-      validator: (String? value) {
-        if (value?.isEmpty ?? true) return 'required';
-      },
     );
   }
 }

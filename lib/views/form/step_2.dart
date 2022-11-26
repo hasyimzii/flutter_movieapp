@@ -19,29 +19,31 @@ class Step2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Form(
-        key: formKey,
-        child: ListView(
-          children: [
-            TextInput(
-              label: 'Genre',
-              keyboard: TextInputType.text,
-              controller: genreController,
-            ),
-            const SizedBox(height: 15),
-            TextInput(
-              label: 'Url',
-              keyboard: TextInputType.url,
-              controller: urlController,
-            ),
-            const SizedBox(height: 15),
-            MultilineInput(
-              label: 'Description',
-              controller: descriptionController,
-            ),
-          ],
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              TextInput(
+                label: 'Genre',
+                keyboard: TextInputType.text,
+                controller: genreController,
+              ),
+              const SizedBox(height: 15),
+              TextInput(
+                label: 'Url',
+                keyboard: TextInputType.url,
+                controller: urlController,
+              ),
+              const SizedBox(height: 15),
+              MultilineInput(
+                label: 'Description',
+                controller: descriptionController,
+              ),
+            ],
+          ),
         ),
       ),
     );

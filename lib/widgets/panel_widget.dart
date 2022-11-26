@@ -41,13 +41,13 @@ class PanelWidget extends StatelessWidget {
               child: panel,
             ),
             Positioned(
-              top: -28,
+              top: -23,
               right: 28,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(12),
                 ),
                 child: const Icon(
                   Icons.edit,

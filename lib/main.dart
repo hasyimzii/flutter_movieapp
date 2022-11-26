@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'blocs/movie/movie_bloc.dart';
 import 'blocs/stepper/stepper_cubit.dart';
+import 'blocs/dropdown/dropdown_cubit.dart';
 
 import 'views/movie/page/movie_page.dart';
 import 'views/movie/detail/movie_detail.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => StepperCubit(),
         ),
+        BlocProvider(
+          create: (context) => DropdownCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           fontFamily: 'Poppins',
         ),
-        initialRoute: '/movie_page',
+        initialRoute: '/movie_form',
         routes: {
           '/movie_page': (context) => const MoviePage(),
           '/movie_detail': (context) => const MovieDetail(),

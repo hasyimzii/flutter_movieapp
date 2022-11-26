@@ -7,6 +7,7 @@ class MovieContent extends StatelessWidget {
     required this.image,
     required this.title,
     required this.director,
+    required this.year,
     required this.rating,
     required this.onTapArgs,
   }) : super(key: key);
@@ -14,6 +15,7 @@ class MovieContent extends StatelessWidget {
   final String image;
   final String title;
   final String director;
+  final String year;
   final double rating;
   final Object onTapArgs;
 
@@ -36,7 +38,7 @@ class MovieContent extends StatelessWidget {
               ),
             ),
             title: Text(
-              title,
+              '$title ($year)',
               style: titleText(15),
             ),
             subtitle: Text(

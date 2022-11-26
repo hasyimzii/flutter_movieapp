@@ -13,7 +13,7 @@ class MovieSkeleton extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 15),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 15),
           child: Container(
             decoration: BoxDecoration(
               color: semiGreyColor,
@@ -24,25 +24,25 @@ class MovieSkeleton extends StatelessWidget {
               highlightColor: lightColor,
               child: const ListTile(
                 leading: ShimmerWidget(
-                  width: 50,
+                  width: 40,
                   height: 90,
-                  radius: 10,
+                  radius: 5,
                 ),
                 title: ShimmerWidget(
                   width: double.infinity,
-                  height: 8,
+                  height: 10,
                   radius: 10,
                 ),
                 subtitle: Align(
                   alignment: Alignment.centerLeft,
                   child: ShimmerWidget(
                     width: 140,
-                    height: 8,
+                    height: 10,
                     radius: 10,
                   ),
                 ),
                 trailing: ShimmerWidget(
-                  width: 50,
+                  width: 40,
                   height: 8,
                   radius: 5,
                 ),
