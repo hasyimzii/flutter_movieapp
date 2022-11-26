@@ -6,7 +6,7 @@ part 'stepper_state.dart';
 class StepperCubit extends Cubit<StepperState> {
   StepperCubit()
       : super(const StepperState(
-          index: 1,
+          index: 0,
         ));
 
   void setStep(int index) => emit(StepperState(

@@ -67,155 +67,109 @@ class MovieForm extends StatelessWidget {
       floatingButton: Column(),
       body: BlocBuilder<StepperCubit, StepperState>(
         builder: (context, state) {
-          return Column(
-            children: [
-              Flexible(
-                child: Stepper(
-                  type: StepperType.horizontal,
-                  physics: const ScrollPhysics(),
-                  currentStep: state.index,
-                  steps: [
-                    Step(
-                      isActive: state.index >= 0,
-                      title: Text(
-                        'Detail',
-                        style: subtitleText(11),
-                      ),
-                      content: Step1(
-                        formKey: formKey[0],
-                        titleController: title,
-                        directorController: director,
-                        yearController: year,
-                        runtimeController: runtime,
-                        ratingController: rating,
-                        ageController: age,
-                      ),
-                    ),
-                    Step(
-                      isActive: state.index >= 1,
-                      title: Text(
-                        'Description',
-                        style: subtitleText(11),
-                      ),
-                      content: Step2(
-                        formKey: formKey[1],
-                        genreController: genre,
-                        urlController: url,
-                        descriptionController: description,
-                      ),
-                    ),
-                    Step(
-                      isActive: state.index >= 2,
-                      title: Text(
-                        'Poster',
-                        style: subtitleText(11),
-                      ),
-                      content: Step3(
-                        formKey: formKey[state.index],
-                        imageController: image,
-                      ),
-                    ),
-                  ],
-                  onStepTapped: (value) {
-                    final StepperCubit stepperCubit =
-                        context.read<StepperCubit>();
-                    stepperCubit.setStep(value);
-                  },
-                  onStepContinue: () {
-                    int index = state.index;
-                    if (!(formKey[index].currentState?.validate() ?? false)) {
-                      return;
-                    }
-
-                    if (index != 2) {
-                      final StepperCubit stepperCubit =
-                          context.read<StepperCubit>();
-                      stepperCubit.setStep(index += 1);
-                    } else {
-                      final MovieBloc movieBloc = context.read<MovieBloc>();
-                      if (movie != null) {
-                        movieBloc.add(
-                          UpdateMovie(
-                            id: int.parse(id.text),
-                            title: title.text,
-                            director: director.text,
-                            year: year.text,
-                            rating: double.parse(rating.text),
-                            runtime: runtime.text,
-                            age: age.text,
-                            genre: genre.text,
-                            description: description.text,
-                            url: url.text,
-                            image: image.text,
-                          ),
-                        );
-                      } else {
-                        movieBloc.add(
-                          CreateMovie(
-                            title: title.text,
-                            director: director.text,
-                            year: year.text,
-                            rating: double.parse(rating.text),
-                            runtime: runtime.text,
-                            age: age.text,
-                            genre: genre.text,
-                            description: description.text,
-                            url: url.text,
-                            image: image.text,
-                          ),
-                        );
-                      }
-                    }
-                  },
-                  onStepCancel: () {
-                    int index = state.index;
-                    if (index != 2) {
-                      final StepperCubit stepperCubit =
-                          context.read<StepperCubit>();
-                      stepperCubit.setStep(index -= 1);
-                    }
-                  },
+          return Stepper(
+            type: StepperType.horizontal,
+            physics: const ScrollPhysics(),
+            currentStep: state.index,
+            steps: [
+              Step(
+                isActive: state.index >= 0,
+                title: Text(
+                  'Detail',
+                  style: subtitleText(11),
+                ),
+                content: Step1(
+                  formKey: formKey[0],
+                  titleController: title,
+                  directorController: director,
+                  yearController: year,
+                  genreController: genre,
+                  runtimeController: runtime,
+                  ratingController: rating,
+                ),
+              ),
+              Step(
+                isActive: state.index >= 1,
+                title: Text(
+                  'Description',
+                  style: subtitleText(11),
+                ),
+                content: Step2(
+                  formKey: formKey[1],
+                  ageController: age,
+                  urlController: url,
+                  descriptionController: description,
+                ),
+              ),
+              Step(
+                isActive: state.index >= 2,
+                title: Text(
+                  'Poster',
+                  style: subtitleText(11),
+                ),
+                content: Step3(
+                  formKey: formKey[2],
+                  imageController: image,
                 ),
               ),
             ],
+            onStepContinue: () {
+              int index = state.index;
+              if (!(formKey[index].currentState?.validate() ?? false)) {
+                return;
+              }
+
+              if (index != 2) {
+                final StepperCubit stepperCubit = context.read<StepperCubit>();
+                stepperCubit.setStep(index += 1);
+              } else {
+                final MovieBloc movieBloc = context.read<MovieBloc>();
+                if (movie != null) {
+                  movieBloc.add(
+                    UpdateMovie(
+                      id: int.parse(id.text),
+                      title: title.text,
+                      director: director.text,
+                      year: year.text,
+                      rating: double.parse(rating.text),
+                      runtime: runtime.text,
+                      age: age.text,
+                      genre: genre.text,
+                      description: description.text,
+                      url: url.text,
+                      image: image.text,
+                    ),
+                  );
+                  Navigator.pop(context);
+                } else {
+                  movieBloc.add(
+                    CreateMovie(
+                      title: title.text,
+                      director: director.text,
+                      year: year.text,
+                      rating: double.parse(rating.text),
+                      runtime: runtime.text,
+                      age: age.text,
+                      genre: genre.text,
+                      description: description.text,
+                      url: url.text,
+                      image: image.text,
+                    ),
+                  );
+                  Navigator.pop(context);
+                }
+              }
+            },
+            onStepCancel: () {
+              int index = state.index;
+              if (index != 2) {
+                final StepperCubit stepperCubit = context.read<StepperCubit>();
+                stepperCubit.setStep(index -= 1);
+              }
+            },
           );
         },
       ),
     );
   }
 }
-
-// Padding(
-//               padding: const EdgeInsets.symmetric(vertical: 15),
-//               child: SubmitButton(
-//                 title: pageText,
-//                 icon: Icons.save,
-//                 onTap: () {
-//                   // validate form
-//                   if (!(formKey.currentState?.validate() ?? false)) return;
-//                   // get provider read
-//                   MovieProvider provider = context.read<MovieProvider>();
-//                   // if edit
-//                   if (movie != null) {
-//                     provider.editMovie(
-//                       index!,
-//                       Movie(
-//                         poster.text,
-//                         title.text,
-//                         director.text,
-//                       ),
-//                     );
-//                     // if create
-//                   } else {
-//                     provider.createMovie(
-//                       Movie(
-//                         poster.text,
-//                         title.text,
-//                         director.text,
-//                       ),
-//                     );
-//                   }
-//                   Navigator.pop(context);
-//                 },
-//               ),
-//             ),

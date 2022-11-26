@@ -6,7 +6,7 @@ part 'dropdown_state.dart';
 class DropdownCubit extends Cubit<DropdownState> {
   DropdownCubit()
       : super(const DropdownState(
-          value: 'Age',
+          value: 'All',
         ));
 
   void setValue(String value) => emit(DropdownState(
