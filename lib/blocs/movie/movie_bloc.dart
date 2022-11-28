@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../models/movie.dart';
 import '../../services/movie_api.dart';
 
 part 'movie_event.dart';
 part 'movie_state.dart';
-
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(MovieInitial()) {
@@ -48,6 +49,11 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
+        Future<MultipartFile> image = MultipartFile.fromFile(
+          event.image.path,
+          filename: event.image.path.split('/').last,
+        );
+
         Map<String, dynamic> data = {
           'title': event.title,
           'director': event.director,
@@ -58,7 +64,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'genre': event.genre,
           'description': event.description,
           'url': event.url,
-          'image': event.image,
+          'image': image,
         };
         movie = await MovieApi.createMovie(data: data);
 
@@ -76,6 +82,16 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
+        Future<MultipartFile>? image;
+        if (event.image != null) {
+          image = MultipartFile.fromFile(
+            event.image!.path,
+            filename: event.image!.path.split('/').last,
+          );
+        } else {
+          image = null;
+        }
+
         Map<String, dynamic> data = {
           'id': event.id,
           'title': event.title,
@@ -87,7 +103,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'genre': event.genre,
           'description': event.description,
           'url': event.url,
-          'image': event.image,
+          'image': image,
+          'old_image': event.oldImage,
         };
         movie = await MovieApi.updateMovie(data: data);
 

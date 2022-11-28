@@ -7,11 +7,13 @@ import '../blocs/dropdown/dropdown_cubit.dart';
 class DropdownWidget extends StatelessWidget {
   const DropdownWidget({
     Key? key,
+    required this.isEdit,
     required this.label,
     required this.items,
     required this.controller,
   }) : super(key: key);
 
+  final bool isEdit;
   final String label;
   final List<String> items;
   final TextEditingController controller;

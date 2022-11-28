@@ -43,7 +43,7 @@ class CreateMovie extends MovieEvent {
   final String genre;
   final String description;
   final String url;
-  final String image;
+  final XFile image;
 }
 
 class UpdateMovie extends MovieEvent {
@@ -59,6 +59,7 @@ class UpdateMovie extends MovieEvent {
     required this.description,
     required this.url,
     required this.image,
+    required this.oldImage,
   });
 
   final int id;
@@ -71,7 +72,8 @@ class UpdateMovie extends MovieEvent {
   final String genre;
   final String description;
   final String url;
-  final String image;
+  final XFile? image;
+  final String oldImage;
 }
 
 class DeleteMovie extends MovieEvent {

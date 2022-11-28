@@ -29,6 +29,7 @@ class TextInput extends StatelessWidget {
       ),
       validator: (String? value) {
         if (value?.isEmpty ?? true) return 'required';
+        return null;
       },
     );
   }

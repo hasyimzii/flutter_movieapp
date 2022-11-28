@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/dropdown/dropdown_cubit.dart';
 
 import '../../widgets/dropown_widget.dart';
 import '../../widgets/multiline_input.dart';
@@ -7,12 +10,14 @@ import '../../widgets/text_input.dart';
 class Step2 extends StatelessWidget {
   const Step2({
     Key? key,
+    required this.isEdit,
     required this.formKey,
     required this.ageController,
     required this.urlController,
     required this.descriptionController,
   }) : super(key: key);
 
+  final bool isEdit;
   final GlobalKey<FormState> formKey;
   final TextEditingController ageController;
   final TextEditingController urlController;
@@ -20,11 +25,17 @@ class Step2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isEdit) {
+      final DropdownCubit dropdownCubit = context.read<DropdownCubit>();
+      dropdownCubit.setValue(ageController.text);
+    }
+
     return Form(
       key: formKey,
       child: Column(
         children: [
           DropdownWidget(
+            isEdit: isEdit,
             label: 'Age',
             items: const ['All', '7+', '13+', '16+', '18+'],
             controller: ageController,
