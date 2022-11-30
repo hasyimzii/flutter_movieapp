@@ -19,7 +19,7 @@ class MultilineInput extends StatelessWidget {
       maxLines: null,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 1, 20, 100),
+        contentPadding: const EdgeInsets.all(20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),

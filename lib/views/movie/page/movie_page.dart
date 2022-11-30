@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../utils/style.dart';
 
 import '../../../blocs/movie/movie_bloc.dart';
+import '../../../blocs/stepper/stepper_cubit.dart';
 
 import '../../../widgets/app_layout.dart';
 import '../../../widgets/search_bar.dart';
@@ -18,23 +19,22 @@ class MoviePage extends StatelessWidget {
     TextEditingController controller = TextEditingController();
     return AppLayout(
       title: 'Movie List',
-      floatingButton: SizedBox(
-        width: 45,
-        height: 45,
-        child: FloatingActionButton(
-          backgroundColor: primaryColor,
-          child: Icon(
-            Icons.add,
-            color: whiteColor,
-            size: 25,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              '/movie_form',
-            );
-          },
+      floatingButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        child: Icon(
+          Icons.add,
+          color: whiteColor,
+          size: 30,
         ),
+        onPressed: () {
+          final StepperCubit stepperCubit = context.read<StepperCubit>();
+          stepperCubit.setStep(0);
+
+          Navigator.pushNamed(
+            context,
+            '/movie_form',
+          );
+        },
       ),
       body: RefreshIndicator(
         onRefresh: () async => context.read<MovieBloc>().add(GetMovie()),

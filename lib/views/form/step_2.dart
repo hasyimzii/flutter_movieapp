@@ -40,13 +40,13 @@ class Step2 extends StatelessWidget {
             items: const ['All', '7+', '13+', '16+', '18+'],
             controller: ageController,
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
           TextInput(
             label: 'Url',
             keyboard: TextInputType.url,
             controller: urlController,
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
           MultilineInput(
             label: 'Description',
             controller: descriptionController,

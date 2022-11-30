@@ -94,9 +94,6 @@ class MovieForm extends StatelessWidget {
               ),
             );
           }
-          final StepperCubit stepperCubit = context.read<StepperCubit>();
-          stepperCubit.setStep(0);
-          
           Navigator.popUntil(
             context,
             ModalRoute.withName('/movie_page'),

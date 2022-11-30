@@ -15,14 +15,14 @@ class PanelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
         const SizedBox(height: 30),
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.network(
             image,
-            height: 200,
+            height: 250,
           ),
         ),
         const SizedBox(height: 40),
@@ -41,22 +41,27 @@ class PanelWidget extends StatelessWidget {
               child: panel,
             ),
             Positioned(
-              top: -23,
+              top: -27,
               right: 28,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(15),
                 ),
                 child: const Icon(
                   Icons.edit,
-                  size: 25,
+                  size: 30,
                 ),
                 onPressed: onTap,
               ),
             ),
           ],
+        ),
+        Flexible(
+          child: Container(
+            color: greyColor,
+          ),
         ),
       ],
     );

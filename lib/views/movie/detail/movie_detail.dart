@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../models/movie.dart';
+import '../../../blocs/stepper/stepper_cubit.dart';
 
 import '../../../widgets/app_layout.dart';
 import '../../../widgets/panel_widget.dart';
@@ -33,6 +35,9 @@ class MovieDetail extends StatelessWidget {
           url: movie.url,
         ),
         onTap: () {
+          final StepperCubit stepperCubit = context.read<StepperCubit>();
+          stepperCubit.setStep(0);
+
           Navigator.pushNamed(
             context,
             '/movie_form',

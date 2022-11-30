@@ -31,13 +31,13 @@ class Step3 extends StatelessWidget {
               if (isUpdate) {
                 return Image.network(
                   imageController.text,
-                  height: 200,
+                  height: 250,
                 );
               } else {
                 return Container(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 55,
-                    horizontal: 25,
+                    vertical: 65,
+                    horizontal: 35,
                   ),
                   decoration: BoxDecoration(
                     color: whiteColor,
@@ -53,7 +53,7 @@ class Step3 extends StatelessWidget {
             } else if (state is ImageLoaded) {
               return Image.file(
                 File(state.image.path),
-                height: 200,
+                height: 250,
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -64,8 +64,8 @@ class Step3 extends StatelessWidget {
               );
               return Container(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 50,
-                  horizontal: 25,
+                  vertical: 65,
+                  horizontal: 35,
                 ),
                 decoration: BoxDecoration(
                   color: whiteColor,
@@ -80,7 +80,7 @@ class Step3 extends StatelessWidget {
             }
           },
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 35),
         SubmitButton(
           title: 'Camera',
           icon: Icons.photo_camera,

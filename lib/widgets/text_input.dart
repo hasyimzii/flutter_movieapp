@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
       keyboardType: keyboard,
       controller: controller,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 1, 20, 11),
+        contentPadding: const EdgeInsets.all(20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
