@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_movieapp">
    <application
-        android:label="flutter_movieapp"
+        android:label="Movie App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

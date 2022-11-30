@@ -40,6 +40,8 @@ dependencies:
   dio: ^4.0.6
   shimmer: ^2.0.0
   image_picker: ^0.8.6
+  flutter_native_splash: ^2.2.16
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+
+flutter_native_splash:
+  color: "#222222"
+  image: assets/images/logo.png
+
+flutter_icons:
+  image_path: assets/images/logo.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

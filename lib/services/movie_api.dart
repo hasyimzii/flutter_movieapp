@@ -53,7 +53,7 @@ class MovieApi {
   }
 
   static Future createMovie({
-    required Map<String, dynamic> data,
+    required FormData data,
   }) async {
     try {
       // rest api
@@ -62,6 +62,9 @@ class MovieApi {
         queryParameters: {
           'data': data,
         },
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
       );
 
       return Movie.fromJson(response.data);
@@ -76,7 +79,7 @@ class MovieApi {
   }
 
   static Future updateMovie({
-    required Map<String, dynamic> data,
+    required FormData data,
   }) async {
     try {
       // rest api
@@ -85,6 +88,9 @@ class MovieApi {
         queryParameters: {
           'data': data,
         },
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
       );
 
       return Movie.fromJson(response.data);

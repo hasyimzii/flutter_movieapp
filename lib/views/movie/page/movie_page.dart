@@ -52,7 +52,7 @@ class MoviePage extends StatelessWidget {
               child: BlocBuilder<MovieBloc, MovieState>(
                 builder: (context, state) {
                   // init page
-                  if (state is MovieInitial) {
+                  if (state is! MovieLoaded) {
                     final MovieBloc movieBloc = context.read<MovieBloc>();
                     movieBloc.add(GetMovie());
                   }

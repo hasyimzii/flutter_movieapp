@@ -66,7 +66,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'url': event.url,
           'image': image,
         };
-        movie = await MovieApi.createMovie(data: data);
+        movie = await MovieApi.createMovie(data: FormData.fromMap(data));
 
         emit(MovieCreated(
           message: movie.message,
@@ -106,7 +106,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'image': image,
           'old_image': event.oldImage,
         };
-        movie = await MovieApi.updateMovie(data: data);
+        movie = await MovieApi.updateMovie(data: FormData.fromMap(data));
 
         emit(MovieUpdated(
           message: movie.message,

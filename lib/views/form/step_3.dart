@@ -10,15 +10,13 @@ import '../../widgets/submit_button.dart';
 class Step3 extends StatelessWidget {
   const Step3({
     Key? key,
-    required this.isEdit,
-    required this.formKey,
+    required this.isUpdate,
     required this.imageController,
     required this.openCamera,
     required this.openGallery,
   }) : super(key: key);
 
-  final bool isEdit;
-  final GlobalKey<FormState> formKey;
+  final bool isUpdate;
   final TextEditingController imageController;
   final VoidCallback openCamera;
   final VoidCallback openGallery;
@@ -30,7 +28,7 @@ class Step3 extends StatelessWidget {
         BlocBuilder<ImageBloc, ImageState>(
           builder: (context, state) {
             if (state is ImageInitial) {
-              if (isEdit) {
+              if (isUpdate) {
                 return Image.network(
                   imageController.text,
                   height: 200,

@@ -20,10 +20,8 @@ class MovieForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // controllers
-    String pageText = 'Create Movie';
-    bool isEdit = false;
+    bool isUpdate = false;
     final List<GlobalKey<FormState>> formKey = [
-      GlobalKey<FormState>(),
       GlobalKey<FormState>(),
       GlobalKey<FormState>(),
     ];
@@ -47,8 +45,7 @@ class MovieForm extends StatelessWidget {
     if (args is Map<String, dynamic>) {
       if (args['movie'] is MovieData) {
         // change title & submit text
-        isEdit = true;
-        pageText = 'Edit Movie';
+        isUpdate = true;
 
         // change controllers
         movie = args['movie'];
@@ -67,9 +64,13 @@ class MovieForm extends StatelessWidget {
     }
 
     return AppLayout(
-      title: pageText,
+      title: (isUpdate) ? 'Update Movie' : 'Create Movie',
       floatingButton: Column(),
       body: BlocListener<MovieBloc, MovieState>(
+        listenWhen: (previous, current) =>
+            current is MovieCreated ||
+            current is MovieUpdated ||
+            current is MovieError,
         listener: (context, movieState) {
           if (movieState is MovieCreated) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -93,9 +94,12 @@ class MovieForm extends StatelessWidget {
               ),
             );
           }
-          Navigator.popAndPushNamed(
+          final StepperCubit stepperCubit = context.read<StepperCubit>();
+          stepperCubit.setStep(0);
+          
+          Navigator.popUntil(
             context,
-            '/movie_page',
+            ModalRoute.withName('/movie_page'),
           );
         },
         child: BlocBuilder<StepperCubit, StepperState>(
@@ -130,7 +134,7 @@ class MovieForm extends StatelessWidget {
                         style: subtitleText(11),
                       ),
                       content: Step2(
-                        isEdit: isEdit,
+                        isUpdate: isUpdate,
                         formKey: formKey[1],
                         ageController: age,
                         urlController: url,
@@ -144,8 +148,7 @@ class MovieForm extends StatelessWidget {
                         style: subtitleText(11),
                       ),
                       content: Step3(
-                        isEdit: isEdit,
-                        formKey: formKey[2],
+                        isUpdate: isUpdate,
                         imageController: image,
                         openCamera: () async {
                           final ImagePicker imagePicker = ImagePicker();
@@ -174,17 +177,17 @@ class MovieForm extends StatelessWidget {
                   ],
                   onStepContinue: () {
                     int index = stepState.index;
-                    if (!(formKey[index].currentState?.validate() ?? false)) {
-                      return;
-                    }
 
                     if (index != 2) {
+                      if (!(formKey[index].currentState?.validate() ?? false)) {
+                        return;
+                      }
                       final StepperCubit stepperCubit =
                           context.read<StepperCubit>();
                       stepperCubit.setStep(index += 1);
                     } else {
                       final MovieBloc movieBloc = context.read<MovieBloc>();
-                      if (movie != null) {
+                      if (isUpdate) {
                         movieBloc.add(
                           UpdateMovie(
                             id: int.parse(id.text),
