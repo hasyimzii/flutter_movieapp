@@ -66,7 +66,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'url': event.url,
           'image': image,
         };
-        movie = await MovieApi.createMovie(data: FormData.fromMap(data));
+        movie = await MovieApi.createMovie(data: data);
 
         emit(MovieCreated(
           message: movie.message,
@@ -93,7 +93,6 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
         }
 
         Map<String, dynamic> data = {
-          'id': event.id,
           'title': event.title,
           'director': event.director,
           'year': event.year,
@@ -104,9 +103,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'description': event.description,
           'url': event.url,
           'image': image,
-          'old_image': event.oldImage,
         };
-        movie = await MovieApi.updateMovie(data: FormData.fromMap(data));
+        movie = await MovieApi.updateMovie(id: event.id, data: data);
 
         emit(MovieUpdated(
           message: movie.message,
@@ -122,10 +120,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
-        Map<String, dynamic> data = {
-          'id': event.id,
-        };
-        movie = await MovieApi.deleteMovie(data: data);
+        movie = await MovieApi.deleteMovie(id: event.id);
 
         emit(MovieDeleted(
           message: movie.message,

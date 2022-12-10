@@ -13,7 +13,7 @@ class MovieApi {
         }),
   );
 
-  static Future getMovie() async {
+  static Future<dynamic> getMovie() async {
     try {
       // rest api
       Response response = await _dio.get('/movie');
@@ -29,7 +29,7 @@ class MovieApi {
     }
   }
 
-  static Future searchMovie({
+  static Future<dynamic> searchMovie({
     required String title,
   }) async {
     try {
@@ -52,68 +52,62 @@ class MovieApi {
     }
   }
 
-  static Future createMovie({
-    required FormData data,
-  }) async {
-    try {
-      // rest api
-      Response response = await _dio.post(
-        '/movie/create',
-        queryParameters: {
-          'data': data,
-        },
-        options: Options(
-          contentType: 'multipart/form-data',
-        ),
-      );
-
-      return Movie.fromJson(response.data);
-    } on DioError catch (e) {
-      // catch error
-      if (e.response != null) {
-        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
-      } else {
-        throw e.message.toString();
-      }
-    }
-  }
-
-  static Future updateMovie({
-    required FormData data,
-  }) async {
-    try {
-      // rest api
-      Response response = await _dio.post(
-        '/movie/update',
-        queryParameters: {
-          'data': data,
-        },
-        options: Options(
-          contentType: 'multipart/form-data',
-        ),
-      );
-
-      return Movie.fromJson(response.data);
-    } on DioError catch (e) {
-      // catch error
-      if (e.response != null) {
-        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
-      } else {
-        throw e.message.toString();
-      }
-    }
-  }
-
-  static Future deleteMovie({
+  static Future<dynamic> createMovie({
     required Map<String, dynamic> data,
   }) async {
     try {
       // rest api
       Response response = await _dio.post(
-        '/movie/delete',
-        queryParameters: {
-          'data': data,
-        },
+        '/movie',
+        data: data,
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
+      );
+
+      return Movie.fromJson(response.data);
+    } on DioError catch (e) {
+      // catch error
+      if (e.response != null) {
+        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
+      } else {
+        throw e.message.toString();
+      }
+    }
+  }
+
+  static Future<dynamic> updateMovie({
+    required int id,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      // rest api
+      Response response = await _dio.put(
+        '/movie/$id',
+        data: data,
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
+      );
+
+      return Movie.fromJson(response.data);
+    } on DioError catch (e) {
+      // catch error
+      if (e.response != null) {
+        throw '${e.response!.statusCode} ${e.response!.statusMessage}';
+      } else {
+        throw e.message.toString();
+      }
+    }
+  }
+
+  static Future<dynamic> deleteMovie({
+    required int id,
+  }) async {
+    try {
+      // rest api
+      Response response = await _dio.delete(
+        '/movie/$id',
       );
 
       return Movie.fromJson(response.data);

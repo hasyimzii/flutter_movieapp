@@ -56,6 +56,7 @@ class MoviePanel extends StatelessWidget {
           onTap: () {
             launchUrl(
               Uri.parse(url),
+              // mode: LaunchMode.externalApplication,
             );
           },
         ),

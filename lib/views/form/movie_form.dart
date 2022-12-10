@@ -200,7 +200,6 @@ class MovieForm extends StatelessWidget {
                             image: (imageState is ImageLoaded)
                                 ? imageState.image
                                 : null,
-                            oldImage: image.text,
                           ),
                         );
                       } else {
