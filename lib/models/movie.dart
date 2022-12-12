@@ -1,15 +1,12 @@
 class Movie {
     Movie({
         required this.data,
-        required this.message,
     });
 
     final List<MovieData> data;
-    final String message;
 
     factory Movie.fromJson(Map<String, dynamic> json) => Movie(
         data: List<MovieData>.from(json["data"].map((x) => MovieData.fromJson(x))),
-        message: json["message"],
     );
 }
 

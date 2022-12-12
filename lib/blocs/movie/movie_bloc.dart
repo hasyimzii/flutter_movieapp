@@ -11,15 +11,14 @@ part 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(MovieInitial()) {
-    Movie movie;
-
     on<GetMovie>((event, emit) async {
       try {
         emit(MovieLoading());
-        movie = await MovieApi.getMovie();
+
+        Movie request = await MovieApi.getMovie();
 
         emit(MovieLoaded(
-          movie: movie.data,
+          movie: request.data,
         ));
       } catch (e) {
         emit(MovieError(
@@ -33,10 +32,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
         emit(MovieLoading());
 
         String title = event.title;
-        movie = await MovieApi.searchMovie(title: title);
+        Movie request = await MovieApi.searchMovie(title: title);
 
         emit(MovieLoaded(
-          movie: movie.data,
+          movie: request.data,
         ));
       } catch (e) {
         emit(MovieError(
@@ -61,10 +60,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'url': event.url,
           'image': await MultipartFile.fromFile(event.image.path),
         });
-        movie = await MovieApi.createMovie(data: data);
+        String request = await MovieApi.createMovie(data: data);
 
         emit(MovieCreated(
-          message: movie.message,
+          message: request,
         ));
       } catch (e) {
         emit(MovieError(
@@ -87,12 +86,14 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'genre': event.genre,
           'description': event.description,
           'url': event.url,
-          'image': (event.image != null) ? await MultipartFile.fromFile(event.image!.path) : null,
+          'image': (event.image != null)
+              ? await MultipartFile.fromFile(event.image!.path)
+              : null,
         });
-        movie = await MovieApi.updateMovie(id: event.id, data: data);
+        String request = await MovieApi.updateMovie(id: event.id, data: data);
 
         emit(MovieUpdated(
-          message: movie.message,
+          message: request,
         ));
       } catch (e) {
         emit(MovieError(
@@ -105,10 +106,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
-        movie = await MovieApi.deleteMovie(id: event.id);
+        String request = await MovieApi.deleteMovie(id: event.id);
 
         emit(MovieDeleted(
-          message: movie.message,
+          message: request,
         ));
       } catch (e) {
         emit(MovieError(

@@ -58,11 +58,11 @@ class MovieApi {
     try {
       // rest api
       Response response = await _dio.post(
-        '/movie',
+        '/movie/create',
         data: data,
       );
 
-      return Movie.fromJson(response.data);
+      return response.data['message'];
     } on DioError catch (e) {
       // catch error
       if (e.response != null) {
@@ -79,12 +79,12 @@ class MovieApi {
   }) async {
     try {
       // rest api
-      Response response = await _dio.put(
-        '/movie/$id',
+      Response response = await _dio.post(
+        '/movie/update/$id',
         data: data,
       );
 
-      return Movie.fromJson(response.data);
+      return response.data['message'];
     } on DioError catch (e) {
       // catch error
       if (e.response != null) {
@@ -104,7 +104,7 @@ class MovieApi {
         '/movie/$id',
       );
 
-      return Movie.fromJson(response.data);
+      return response.data['message'];
     } on DioError catch (e) {
       // catch error
       if (e.response != null) {
