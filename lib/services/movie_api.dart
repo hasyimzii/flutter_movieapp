@@ -53,16 +53,13 @@ class MovieApi {
   }
 
   static Future<dynamic> createMovie({
-    required Map<String, dynamic> data,
+    required FormData data,
   }) async {
     try {
       // rest api
       Response response = await _dio.post(
         '/movie',
         data: data,
-        options: Options(
-          contentType: 'multipart/form-data',
-        ),
       );
 
       return Movie.fromJson(response.data);
@@ -78,16 +75,13 @@ class MovieApi {
 
   static Future<dynamic> updateMovie({
     required int id,
-    required Map<String, dynamic> data,
+    required FormData data,
   }) async {
     try {
       // rest api
       Response response = await _dio.put(
         '/movie/$id',
         data: data,
-        options: Options(
-          contentType: 'multipart/form-data',
-        ),
       );
 
       return Movie.fromJson(response.data);

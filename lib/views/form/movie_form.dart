@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import '../../utils/style.dart';
 
 import '../../blocs/movie/movie_bloc.dart';
@@ -248,7 +249,7 @@ class MovieForm extends StatelessWidget {
     if (imageFile != null) {
       final ImageBloc imageBloc = context.read<ImageBloc>();
       imageBloc.add(SetImage(
-        image: imageFile,
+        image: File(imageFile.path),
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

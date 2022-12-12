@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 part 'image_event.dart';
 part 'image_state.dart';

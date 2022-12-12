@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 import '../../models/movie.dart';
 import '../../services/movie_api.dart';
@@ -49,12 +49,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
-        Future<MultipartFile> image = MultipartFile.fromFile(
-          event.image.path,
-          filename: event.image.path.split('/').last,
-        );
-
-        Map<String, dynamic> data = {
+        FormData data = FormData.fromMap({
           'title': event.title,
           'director': event.director,
           'year': event.year,
@@ -64,8 +59,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'genre': event.genre,
           'description': event.description,
           'url': event.url,
-          'image': image,
-        };
+          'image': await MultipartFile.fromFile(event.image.path),
+        });
         movie = await MovieApi.createMovie(data: data);
 
         emit(MovieCreated(
@@ -82,17 +77,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       try {
         emit(MovieLoading());
 
-        Future<MultipartFile>? image;
-        if (event.image != null) {
-          image = MultipartFile.fromFile(
-            event.image!.path,
-            filename: event.image!.path.split('/').last,
-          );
-        } else {
-          image = null;
-        }
-
-        Map<String, dynamic> data = {
+        FormData data = FormData.fromMap({
           'title': event.title,
           'director': event.director,
           'year': event.year,
@@ -102,8 +87,8 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           'genre': event.genre,
           'description': event.description,
           'url': event.url,
-          'image': image,
-        };
+          'image': (event.image != null) ? await MultipartFile.fromFile(event.image!.path) : null,
+        });
         movie = await MovieApi.updateMovie(id: event.id, data: data);
 
         emit(MovieUpdated(

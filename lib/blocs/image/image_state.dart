@@ -14,7 +14,7 @@ class ImageLoaded extends ImageState {
     required this.image,
   });
 
-  final XFile image;
+  final File image;
 
   @override
   List<Object> get props => [image];
