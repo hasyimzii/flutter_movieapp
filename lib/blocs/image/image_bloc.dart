@@ -12,5 +12,9 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
         image: event.image,
       ));
     });
+
+    on<ResetImage>((event, emit) {
+      emit(ImageInitial());
+    });
   }
 }

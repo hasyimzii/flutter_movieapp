@@ -11,6 +11,8 @@ import '../../blocs/image/image_bloc.dart';
 import '../../models/movie.dart';
 
 import '../../widgets/app_layout.dart';
+import '../../widgets/snackbar_widget.dart';
+
 import 'step_1.dart';
 import 'step_2.dart';
 import 'step_3.dart';
@@ -74,27 +76,17 @@ class MovieForm extends StatelessWidget {
             current is MovieError,
         listener: (context, movieState) {
           if (movieState is MovieCreated) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                duration: const Duration(seconds: 1),
-                content: Text(movieState.message),
-              ),
-            );
+            SnackbarWidget.show(context, movieState.message);
           } else if (movieState is MovieUpdated) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                duration: const Duration(seconds: 1),
-                content: Text(movieState.message),
-              ),
-            );
+            SnackbarWidget.show(context, movieState.message);
           } else if (movieState is MovieError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                duration: const Duration(seconds: 1),
-                content: Text(movieState.message),
-              ),
-            );
+            SnackbarWidget.show(context, movieState.message);
           }
+
+          // reset image
+          final ImageBloc imageBloc = context.read<ImageBloc>();
+          imageBloc.add(ResetImage());
+
           Navigator.popUntil(
             context,
             ModalRoute.withName('/movie_page'),
@@ -252,12 +244,7 @@ class MovieForm extends StatelessWidget {
         image: File(imageFile.path),
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          duration: Duration(seconds: 1),
-          content: Text('Failed to get image'),
-        ),
-      );
+      SnackbarWidget.show(context, 'Failed to get image');
     }
   }
 }

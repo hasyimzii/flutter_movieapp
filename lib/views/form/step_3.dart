@@ -6,6 +6,7 @@ import '../../utils/style.dart';
 import '../../blocs/image/image_bloc.dart';
 
 import '../../widgets/submit_button.dart';
+import '../../widgets/snackbar_widget.dart';
 
 class Step3 extends StatelessWidget {
   const Step3({
@@ -56,12 +57,7 @@ class Step3 extends StatelessWidget {
                 height: 250,
               );
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  duration: Duration(seconds: 1),
-                  content: Text('Failed to get image'),
-                ),
-              );
+              SnackbarWidget.show(context, 'Failed to get image',);
               return Container(
                 padding: const EdgeInsets.symmetric(
                   vertical: 65,
