@@ -25,7 +25,9 @@ class TextInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         labelText: label,
-        labelStyle: subtitleText(13),
+        labelStyle: mediumText(13),
+        hintText: 'Type $label...',
+        hintStyle: subtitleText(13),
       ),
       validator: (String? value) {
         if (value?.isEmpty ?? true) return 'required';

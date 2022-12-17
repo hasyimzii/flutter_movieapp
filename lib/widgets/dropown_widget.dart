@@ -31,7 +31,7 @@ class DropdownWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               labelText: label,
-              labelStyle: subtitleText(13),
+              labelStyle: mediumText(13),
             ),
             value: state.value,
             icon: const Icon(Icons.arrow_drop_down),
