@@ -6,9 +6,7 @@ import 'blocs/stepper/stepper_cubit.dart';
 import 'blocs/dropdown/dropdown_cubit.dart';
 import 'blocs/image/image_bloc.dart';
 
-import 'views/movie/page/movie_page.dart';
-import 'views/movie/detail/movie_detail.dart';
-import 'views/form/movie_form.dart';
+import 'utils/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,12 +38,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           fontFamily: 'Poppins',
         ),
-        initialRoute: '/movie_page',
-        routes: {
-          '/movie_page': (context) => const MoviePage(),
-          '/movie_detail': (context) => const MovieDetail(),
-          '/movie_form': (context) => const MovieForm(),
-        },
+        initialRoute: Routes.moviePage,
+        routes: Routes.routes,
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../utils/routes.dart';
 
 import '../../../models/movie.dart';
 import '../../../blocs/stepper/stepper_cubit.dart';
@@ -40,7 +41,7 @@ class MovieDetail extends StatelessWidget {
 
           Navigator.pushNamed(
             context,
-            '/movie_form',
+            Routes.movieForm,
             arguments: {
               'movie': movie,
             },

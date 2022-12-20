@@ -31,7 +31,7 @@ class PanelWidget extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(25),
               decoration: BoxDecoration(
                 color: greyColor,
                 borderRadius: const BorderRadius.vertical(

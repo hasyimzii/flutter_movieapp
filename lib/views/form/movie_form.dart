@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import '../../utils/style.dart';
+import '../../utils/routes.dart';
 
 import '../../blocs/movie/movie_bloc.dart';
 import '../../blocs/stepper/stepper_cubit.dart';
@@ -89,7 +90,7 @@ class MovieForm extends StatelessWidget {
 
           Navigator.popUntil(
             context,
-            ModalRoute.withName('/movie_page'),
+            ModalRoute.withName(Routes.moviePage),
           );
         },
         child: BlocBuilder<StepperCubit, StepperState>(
@@ -169,9 +170,9 @@ class MovieForm extends StatelessWidget {
                     int index = stepState.index;
 
                     if (index != 2) {
-                      if (!(formKey[index].currentState?.validate() ?? false)) {
-                        return;
-                      }
+                      // validate
+                      if (!(formKey[index].currentState?.validate() ?? false)) return;
+
                       final StepperCubit stepperCubit =
                           context.read<StepperCubit>();
                       stepperCubit.setStep(index += 1);

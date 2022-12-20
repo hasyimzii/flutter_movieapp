@@ -57,7 +57,10 @@ class Step3 extends StatelessWidget {
                 height: 250,
               );
             } else {
-              SnackbarWidget.show(context, 'Failed to get image',);
+              SnackbarWidget.show(
+                context,
+                'Failed to get image',
+              );
               return Container(
                 padding: const EdgeInsets.symmetric(
                   vertical: 65,
@@ -76,17 +79,33 @@ class Step3 extends StatelessWidget {
             }
           },
         ),
-        const SizedBox(height: 35),
-        SubmitButton(
-          title: 'Camera',
-          icon: Icons.photo_camera,
-          onTap: openCamera,
+        const SizedBox(height: 20),
+        Text(
+          'Take Image From :',
+          style: titleText(14),
         ),
-        const SizedBox(height: 10),
-        SubmitButton(
-          title: 'Gallery',
-          icon: Icons.photo_library,
-          onTap: openGallery,
+        const SizedBox(height: 7),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.43,
+              child: SubmitButton(
+                title: 'Camera',
+                icon: Icons.photo_camera,
+                onTap: openCamera,
+              ),
+            ),
+            // const SizedBox(height: 15),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.43,
+              child: SubmitButton(
+                title: 'Gallery',
+                icon: Icons.photo_library,
+                onTap: openGallery,
+              ),
+            ),
+          ],
         ),
       ],
     );

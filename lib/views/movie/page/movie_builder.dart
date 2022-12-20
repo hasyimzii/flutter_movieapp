@@ -17,7 +17,7 @@ class MovieBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<MovieData> movie = movieLoaded.movie;
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       itemCount: movie.length,
       itemBuilder: (BuildContext context, int index) {
         return MovieContent(

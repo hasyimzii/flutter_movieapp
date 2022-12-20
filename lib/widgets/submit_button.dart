@@ -15,19 +15,27 @@ class SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: onTap,
-      icon: Icon(
-        icon,
-        size: 20.0,
-      ),
-      label: Text(
-        title,
-        style: titleText(13),
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: primaryColor,
-        minimumSize: const Size(double.infinity, 40),
+    return SizedBox(
+      height: 50,
+      child: ElevatedButton.icon(
+        onPressed: onTap,
+        icon: Icon(
+          icon,
+          size: 18,
+        ),
+        label: Text(
+          title,
+          style: titleText(13),
+        ),
+        style: ElevatedButton.styleFrom(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          backgroundColor: primaryColor,
+          minimumSize: const Size(double.infinity, 40),
+        ),
       ),
     );
   }

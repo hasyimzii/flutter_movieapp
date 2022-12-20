@@ -26,7 +26,7 @@ class Information extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Rating',
@@ -40,7 +40,7 @@ class Information extends StatelessWidget {
             ),
             const VerticalDivider(thickness: 2),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Runtime',
@@ -54,7 +54,7 @@ class Information extends StatelessWidget {
             ),
             const VerticalDivider(thickness: 2),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'Age',

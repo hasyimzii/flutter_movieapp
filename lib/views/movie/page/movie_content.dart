@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/style.dart';
+import '../../../utils/routes.dart';
 
 class MovieContent extends StatelessWidget {
   const MovieContent({
@@ -53,7 +54,7 @@ class MovieContent extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(
               context,
-              '/movie_detail',
+              Routes.movieDetail,
               arguments: onTapArgs,
             );
           },
