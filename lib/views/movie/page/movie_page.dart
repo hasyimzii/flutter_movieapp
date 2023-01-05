@@ -9,8 +9,8 @@ import '../../../blocs/stepper/stepper_cubit.dart';
 import '../../../widgets/app_layout.dart';
 import '../../../widgets/search_bar.dart';
 
-import 'movie_builder.dart';
-import 'movie_skeleton.dart';
+import 'component/movie_builder.dart';
+import 'component/movie_skeleton.dart';
 
 class MoviePage extends StatelessWidget {
   const MoviePage({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class MoviePage extends StatelessWidget {
 
                   // build page
                   if (state is MovieInitial) {
-                    return Column();
+                    return Container();
                   } else if (state is MovieLoading) {
                     return const MovieSkeleton();
                   } else if (state is MovieLoaded) {

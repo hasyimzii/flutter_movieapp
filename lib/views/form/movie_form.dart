@@ -14,9 +14,9 @@ import '../../models/movie.dart';
 import '../../widgets/app_layout.dart';
 import '../../widgets/snackbar_widget.dart';
 
-import 'step_1.dart';
-import 'step_2.dart';
-import 'step_3.dart';
+import 'component/step_1.dart';
+import 'component/step_2.dart';
+import 'component/step_3.dart';
 
 class MovieForm extends StatelessWidget {
   const MovieForm({Key? key}) : super(key: key);
@@ -69,7 +69,7 @@ class MovieForm extends StatelessWidget {
 
     return AppLayout(
       title: (isUpdate) ? 'Update Movie' : 'Create Movie',
-      floatingButton: Column(),
+      floatingButton: Container(),
       body: BlocListener<MovieBloc, MovieState>(
         listenWhen: (previous, current) =>
             current is MovieCreated ||

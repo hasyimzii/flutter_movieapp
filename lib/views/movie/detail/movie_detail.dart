@@ -8,7 +8,7 @@ import '../../../blocs/stepper/stepper_cubit.dart';
 import '../../../widgets/app_layout.dart';
 import '../../../widgets/panel_widget.dart';
 
-import 'movie_panel.dart';
+import 'component/movie_panel.dart';
 
 class MovieDetail extends StatelessWidget {
   const MovieDetail({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class MovieDetail extends StatelessWidget {
 
     return AppLayout(
       title: 'Movie Details',
-      floatingButton: Column(),
+      floatingButton: Container(),
       body: PanelWidget(
         image: movie.image,
         panel: MoviePanel(
